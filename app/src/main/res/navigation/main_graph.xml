@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/navigation_my_tracking">
+
+    <fragment
+        android:id="@+id/navigation_my_tracking"
+        android:name="com.examlpe.qxstockwatch.ui.main.tracking.MyTrackingFragment"
+        android:label="MyTrackingFragment" />
+    <fragment
+        android:id="@+id/navigation_add_tracking"
+        android:name="com.examlpe.qxstockwatch.ui.main.add.AddTrackingFragment"
+        android:label="AddTrackingFragment" />
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="com.examlpe.qxstockwatch.ui.main.notifications.NotificationsFragment"
+        android:label="NotificationsFragment" />
+</navigation>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "605950153248",
+    "project_id": "stockwatch-2644d",
+    "storage_bucket": "stockwatch-2644d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:605950153248:android:73c96392024c304370a245",
+        "android_client_info": {
+          "package_name": "com.examlpe.qxstockwatch"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "605950153248-fdr5u1ah3494ojvlc6blkj3jniskpna4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAi7tLUL-UFNQck7fK5GrlX5DGsxfqDTZ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "605950153248-fdr5u1ah3494ojvlc6blkj3jniskpna4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

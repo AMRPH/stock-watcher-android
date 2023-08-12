@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_my_tracking"
+        android:icon="@drawable/nav_tracking"
+        android:title="My tracking" />
+
+    <item
+        android:id="@+id/navigation_add_tracking"
+        android:icon="@drawable/nav_add_tracking"
+        android:title="Add tracking" />
+
+    <item
+        android:id="@+id/navigation_notifications"
+        android:icon="@drawable/nav_notifications"
+        android:title="Notifications" />
+
+</menu>

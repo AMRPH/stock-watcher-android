@@ -1,0 +1,20 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.QXStockWatch" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/gold2</item>
+        <item name="colorPrimaryVariant">@color/black2</item>
+        <item name="colorOnPrimary">@color/black1</item>
+        <item name="android:windowBackground">@color/black1</item>
+        <item name="android:textColor">@color/beige</item>
+        <item name="fontFamily">@font/roboto</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/beige</item>
+        <item name="colorSecondaryVariant">@color/red1</item>
+        <item name="colorOnSecondary">@color/red1</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/black2</item>
+        <item name="android:navigationBarColor">@color/black2</item>
+        <!-- Customize your theme here. -->
+    </style>
+</resources>
