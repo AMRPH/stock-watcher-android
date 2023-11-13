@@ -38,11 +38,6 @@
             android:name=".ui.main.MainActivity">
         </activity>
 
-
-        <activity
-            android:name=".ui.main.WebActivity">
-        </activity>
-
         <receiver
             android:name=".util.AlarmManagerBroadcastReceiver"
             android:process=":remote">

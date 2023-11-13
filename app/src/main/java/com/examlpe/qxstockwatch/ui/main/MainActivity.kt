@@ -7,20 +7,13 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.work.Constraints
-import androidx.work.NetworkType
-import androidx.work.PeriodicWorkRequest
-import androidx.work.WorkManager
 import com.examlpe.qxstockwatch.R
 import com.examlpe.qxstockwatch.databinding.ActivityMainBinding
 import com.examlpe.qxstockwatch.util.AlarmManagerBroadcastReceiver
-import com.examlpe.qxstockwatch.util.MyWorker
-import java.util.concurrent.TimeUnit
 
 
 class MainActivity: AppCompatActivity() {
@@ -41,19 +34,6 @@ class MainActivity: AppCompatActivity() {
         startAlarmManager()
     }
 
-    fun startWorker(){
-        val constraints = Constraints.Builder()
-            .setRequiredNetworkType(NetworkType.CONNECTED)
-            .build()
-
-        val myWorkRequest = PeriodicWorkRequest.Builder(MyWorker::class.java, 15, TimeUnit.MINUTES, 10, TimeUnit.MINUTES)
-            .setConstraints(constraints)
-            .addTag("Worker")
-            .build()
-
-        WorkManager.getInstance(this).enqueue(myWorkRequest)
-    }
-
     private fun startAlarmManager(){
         val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
@@ -65,7 +45,6 @@ class MainActivity: AppCompatActivity() {
             PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
         }
 
-
-        //alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), AlarmManager.INTERVAL_FIFTEEN_MINUTES, pendingIntent)
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), AlarmManager.INTERVAL_FIFTEEN_MINUTES, pendingIntent)
     }
 }

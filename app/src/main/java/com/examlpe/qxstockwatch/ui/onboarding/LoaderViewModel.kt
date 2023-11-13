@@ -24,44 +24,14 @@ import java.io.InputStreamReader
 
 class LoaderViewModel(private val application: Application): BaseViewModel(application){
 
-    private val remoteConfig: FirebaseRemoteConfig = Firebase.remoteConfig
-
-    private var isFlag: Boolean = false
-    private var listGeo: List<String> = emptyList()
-    private var listIps: List<String> = emptyList()
-
-    var liveData = MutableLiveData(0)
+    var liveData = MutableLiveData(false)
 
     init {
-        val configSettings = remoteConfigSettings {
-            minimumFetchIntervalInSeconds = 0
-        }
-        remoteConfig.setConfigSettingsAsync(configSettings)
-
-        getData()
-    }
-
-    private fun getData(){
-        remoteConfig.fetchAndActivate()
-            .addOnCompleteListener {
-                if (it.isSuccessful){
-                    isFlag = remoteConfig.getBoolean("isCloakaOn")
-
-                    val itemType = object : TypeToken<List<String>>() {}.type
-                    listIps = Gson().fromJson(remoteConfig.getString("ListRestrictedIPs"), itemType)
-                    listGeo = Gson().fromJson(remoteConfig.getString("ListRestrictedGeo"), itemType)
-
-                    if (isFlag && getIP() !in listIps && getGeo() !in listGeo){
-                        liveData.postValue(2)
-                    } else {
-                        App.dbRepository.isEmpty()
-                            .subscribe(Consumer {res ->
-                                if (res == 0) getStocks()
-                                else { liveData.postValue(1) }
-                            }).let { compositeDisposable.add(it) }
-                    }
-                }
-            }
+        App.dbRepository.isEmpty()
+            .subscribe(Consumer {res ->
+                if (res == 0) getStocks()
+                else { liveData.postValue(true) }
+            }).let { compositeDisposable.add(it) }
     }
 
     private fun getStocks(){
@@ -77,7 +47,7 @@ class LoaderViewModel(private val application: Application): BaseViewModel(appli
             }
         } while (eachline != null && i <= 9080)
 
-        liveData.postValue(1)
+        liveData.postValue(true)
     }
 
     private fun addStock(symbol: String, name: String){
@@ -88,17 +58,5 @@ class LoaderViewModel(private val application: Application): BaseViewModel(appli
         )
 
         App.dbRepository.insert(stock)
-    }
-
-    private fun getGeo(): String {
-        val tm = application.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
-
-        return tm.networkCountryIso
-    }
-
-    private fun getIP(): String {
-        val wm: WifiManager = application.getSystemService(Context.WIFI_SERVICE) as WifiManager
-
-        return Formatter.formatIpAddress(wm.connectionInfo.ipAddress)
     }
 }

@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.examlpe.qxstockwatch.App
 import com.examlpe.qxstockwatch.R
 import com.examlpe.qxstockwatch.ui.main.MainActivity
-import com.examlpe.qxstockwatch.ui.main.WebActivity
 
 
 class LoaderActivity : AppCompatActivity() {
@@ -20,14 +19,13 @@ class LoaderActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this)[LoaderViewModel::class.java]
 
         viewModel.liveData.observe(this) {
-            when (it) {
-                1 -> startWhite()
-                2 -> startBlack()
+            if (it){
+                start()
             }
         }
     }
 
-    private fun startWhite(){
+    private fun start(){
         val intent = if (App.isOnboarding){
             Intent(this, MainActivity::class.java)
         } else {
@@ -37,10 +35,5 @@ class LoaderActivity : AppCompatActivity() {
         finish()
     }
 
-    private fun startBlack(){
-        val intent = Intent(this, WebActivity::class.java)
-        startActivity(intent)
-        finish()
-    }
 
 }
