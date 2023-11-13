@@ -68,9 +68,6 @@ dependencies {
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-rxjava2:$room_version"
 
-    //OneSignal
-    implementation 'com.onesignal:OneSignal:[4.0.0, 4.99.99]'
-
     //Gson
     implementation 'com.google.code.gson:gson:2.9.0'
 
