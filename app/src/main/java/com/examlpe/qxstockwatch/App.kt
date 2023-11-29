@@ -6,7 +6,6 @@ import androidx.room.Room
 import com.examlpe.qxstockwatch.database.DatabaseRepository
 import com.examlpe.qxstockwatch.database.StockDatabase
 import com.examlpe.qxstockwatch.net.FinnhubRepository
-import com.onesignal.OneSignal
 import io.finnhub.api.apis.DefaultApi
 import io.finnhub.api.infrastructure.ApiClient
 
